@@ -13,11 +13,8 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Java Rewrite", "Codebase has again been rewritten, for the last time, in my favorite language: Java", false)
-                .addField("Member Milestone Fix", "Fixed the bug where a member milestone was shown for ever 5 members instead of 50", false)
-                .addField("Random Embed Colors", "Random embed colors are back instead of having the same color for a group of commands", false)
-                .addField("No More Role Pings", "You can now use addrole and removerole with just the role name and not the role mention", false)
-                .addField("Roleinfo Command", "Added the roleinfo command", false)
+                .addField("Rand Updates", "For the rand command you can now provide any two numbers, in any order, and the smallest will be used as the min and the largest as the max", false)
+                .addField("Server Logs", "The server logs now show Tux's activity and guilds he is in", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
@@ -39,7 +36,7 @@ public class CmdGeneral
 
         String fun = "`coinflip` ~ Heads or Tails?" +
                 "\n`echo <Phrase>` ~ Make Tux look like he is saying something" +
-                "\n`rand <Min> <Max>` ~ Generates a random number between the given min and max";
+                "\n`rand <Range 1> <Range 2>` ~ Generates a random number between the given range";
 
         String mod = "`addrole <@User> <Role Name>` ~ Adds the given role to the pinged user" +
                 "\n`ban <@User> <Reason>` ~ Bans the pinged user for the given reason" +

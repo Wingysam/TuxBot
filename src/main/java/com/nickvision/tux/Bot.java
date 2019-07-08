@@ -14,7 +14,7 @@ public class Bot
 
     public Bot()
     {
-        version = "9.1.0";
+        version = "9.1.1";
         System.out.println("===Tux Bot for Discord===");
         System.out.println("Version: " + version);
         getBotConfig();
@@ -86,21 +86,27 @@ public class Bot
         {
             case 0:
                 a = Activity.playing("Super Tux Kart");
+                System.out.println("[TUX] Activity = Playing Super Tux Kart");
                 break;
             case 1:
                 a = Activity.playing("ZSH Terminal");
+                System.out.println("[TUX] Activity = Playing ZSH Terminal");
                 break;
             case 2:
                 a = Activity.playing("Bash Terminal");
+                System.out.println("[TUX] Activity = Playing Bash Terminal");
                 break;
             case 3:
                 a = Activity.watching("Arch Install Tutorial");
+                System.out.println("[TUX] Activity = Watching Arch Install Tutorial");
                 break;
             case 4:
                 a = Activity.listening("Linus");
+                System.out.println("[TUX] Activity = Listening to Linus");
                 break;
         }
         jda.getPresence().setActivity(a);
+        jda.getGuilds().forEach(guild -> System.out.println("[GUILD] " + guild.getName()));
         jda.addEventListener(new Events());
         jda.addEventListener(new CmdHandler());
     }

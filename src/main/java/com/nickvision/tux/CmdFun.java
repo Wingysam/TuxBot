@@ -71,8 +71,18 @@ public class CmdFun
             int min, max;
             try
             {
-                min = Integer.parseInt(args[1]);
-                max = Integer.parseInt(args[2]);
+                int a = Integer.parseInt(args[1]);
+                int b = Integer.parseInt(args[2]);
+                if(a > b)
+                {
+                    min = b;
+                    max = a;
+                }
+                else
+                {
+                    min = a;
+                    max = b;
+                }
             }
             catch(Exception ex)
             {
@@ -83,13 +93,7 @@ public class CmdFun
                 msg.getChannel().sendMessage(embed.build()).queue();
                 return;
             }
-            if(min > max)
-            {
-                embed.setTitle("Error");
-                embed.addField("Invalid Args", "Your min can't be greater than your max", false);
-                embed.setColor(Color.RED);
-            }
-            else if(min == max)
+            if(min == max)
             {
                 embed.setTitle("Error");
                 embed.addField("Invalid Args", "Your min can't be equal to your max", false);
@@ -105,7 +109,7 @@ public class CmdFun
         else
         {
             embed.setTitle("Error");
-            embed.addField("Missing Args", "You need a minimum number and a maximum number", false);
+            embed.addField("Missing Args", "rand <Range 1> <Range 2>", false);
             embed.setColor(Color.RED);
         }
         msg.getChannel().sendTyping().queue();
