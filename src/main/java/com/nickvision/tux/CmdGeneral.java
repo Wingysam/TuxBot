@@ -13,8 +13,8 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Rand Updates", "For the rand command you can now provide any two numbers, in any order, and the smallest will be used as the min and the largest as the max", false)
-                .addField("Server Logs", "The server logs now show Tux's activity and guilds he is in", false)
+                .addField("Updated Rand Description", "Reworded the rand command's description in help", false)
+                .addField("Roleinfo Update", "The roleinfo update shows the user count for the @everyone role", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
@@ -36,7 +36,7 @@ public class CmdGeneral
 
         String fun = "`coinflip` ~ Heads or Tails?" +
                 "\n`echo <Phrase>` ~ Make Tux look like he is saying something" +
-                "\n`rand <Range 1> <Range 2>` ~ Generates a random number between the given range";
+                "\n`rand <Range 1> <Range 2>` ~ Generates a random number in the given range";
 
         String mod = "`addrole <@User> <Role Name>` ~ Adds the given role to the pinged user" +
                 "\n`ban <@User> <Reason>` ~ Bans the pinged user for the given reason" +
@@ -135,7 +135,8 @@ public class CmdGeneral
             {
                 if(m.getRoles().contains(role)) memberCount++;
             }
-            embed.addField(role.getName(), String.valueOf(memberCount), true);
+            if(role.getName().equals("@everyone")) embed.addField(role.getName(), String.valueOf(guild.getMembers().size()), true);
+            else embed.addField(role.getName(), String.valueOf(memberCount), true);
         });
         embed.setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Implementation-Title: TuxBot
-Implementation-Version: 9.1.1
+Implementation-Version: 9.1.2
 Main-Class: com.nickvision.tux.Bot
 
