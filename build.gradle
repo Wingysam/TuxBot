@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.nickvision'
-version '9.1.2'
+version '9.2'
 
 sourceCompatibility = 1.8
 
@@ -29,5 +29,5 @@ repositories {
 }
 
 dependencies {
-    compile 'net.dv8tion:JDA:4.BETA.0_20'
+    compile 'net.dv8tion:JDA:4.BETA.0_23'
 }

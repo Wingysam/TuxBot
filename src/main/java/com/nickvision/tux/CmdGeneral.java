@@ -13,8 +13,9 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Updated Rand Description", "Reworded the rand command's description in help", false)
-                .addField("Roleinfo Update", "The roleinfo update shows the user count for the @everyone role", false)
+                .addField("Send Help", "Fixed issue where if your private messages where disabled you wouldn't be able to get the help commands", false)
+                .addField("Distro Command Security", "Fixed issue where users can add themselves to non-distro roles using the distro command", false)
+                .addField("Other Role", "Added support for the 'other' distro role", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
@@ -61,19 +62,22 @@ public class CmdGeneral
                 .addField("Mod Commands", mod, false)
                 .addField("Misc Commands", misc, false)
                 .setColor(Bot.randomColor());
-        msg.getAuthor().openPrivateChannel().queue(channel ->
+        msg.getAuthor().openPrivateChannel().queue((channel) ->
                 {
-                    channel.sendMessage(embed.build()).queue();
-                    EmbedBuilder embed2 = new EmbedBuilder()
-                            .setTitle("Check Your DMs")
-                            .setDescription("The commands have been sent to your DMs")
-                            .setColor(Bot.randomColor());
-                    msg.getChannel().sendTyping().queue();
-                    msg.getChannel().sendMessage(embed2.build()).queue();
-                }, failure ->
-                {
-                    msg.getChannel().sendTyping().queue();
-                    msg.getChannel().sendMessage(embed.build()).queue();
+                    channel.sendMessage(embed.build()).queue((good) ->
+                    {
+                        EmbedBuilder embed2 = new EmbedBuilder()
+                                .setTitle("Check Your DMs")
+                                .setDescription("The commands have been sent to your DMs")
+                                .setColor(Bot.randomColor());
+                        msg.getChannel().sendTyping().queue();
+                        msg.getChannel().sendMessage(embed2.build()).queue();
+                    }, (bad) ->
+                    {
+                        msg.getChannel().sendTyping().queue();
+                        msg.getChannel().sendMessage(embed.build()).queue();
+                    });
+
                 });
     }
 
