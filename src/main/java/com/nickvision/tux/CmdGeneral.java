@@ -13,9 +13,7 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Send Help", "Fixed issue where if your private messages where disabled you wouldn't be able to get the help commands", false)
-                .addField("Distro Command Security", "Fixed issue where users can add themselves to non-distro roles using the distro command", false)
-                .addField("Other Role", "Added support for the 'other' distro role", false)
+                .addField("Faster Rm", "Rewrote the rm command to speed it up", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();

@@ -1,5 +1,6 @@
 package com.nickvision.tux;
 import java.awt.Color;
+import java.util.List;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
@@ -347,7 +348,7 @@ public class CmdModeration
         {
             if(hasPerms(msg.getMember(), Permission.MESSAGE_MANAGE))
             {
-                MessageChannel channel = msg.getChannel();
+                TextChannel channel = msg.getTextChannel();
                 int toDelete;
                 try
                 {
@@ -370,8 +371,11 @@ public class CmdModeration
                 }
                 else
                 {
-                    MessageHistory messageHistory = channel.getHistory();
-                    messageHistory.retrievePast(toDelete).complete().forEach(message -> message.delete().queue());
+                    MessageHistory history = new MessageHistory(channel);
+                    List<Message> msgs;
+                    msg.delete().queue();
+                    msgs = history.retrievePast(toDelete).complete();
+                    channel.deleteMessages(msgs).queue();
                     embed.setTitle("Messages Deleted");
                     embed.addField("Number of Messages Deleted", String.valueOf(toDelete), false);
                     embed.setColor(Bot.randomColor());
