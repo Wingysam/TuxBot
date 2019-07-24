@@ -13,7 +13,7 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Faster Rm", "Rewrote the rm command to speed it up", false)
+                .addField("No More Deleting Echo Command", "Tux will no longer delete the original messgae of the echo command call to prevent abuse", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();

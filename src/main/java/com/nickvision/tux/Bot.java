@@ -14,7 +14,7 @@ public class Bot
 
     public Bot()
     {
-        version = "9.2.1";
+        version = "9.2.2";
         System.out.println("===Tux Bot for Discord===");
         System.out.println("Version: " + version);
         getBotConfig();

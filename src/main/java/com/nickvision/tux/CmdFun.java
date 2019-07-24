@@ -51,7 +51,6 @@ public class CmdFun
             for(int i = 1; i < args.length; i++) toEcho += args[i] + " ";
             embed.setTitle(toEcho);
             embed.setColor(Bot.randomColor());
-            msg.delete().queue();
         }
         else
         {
