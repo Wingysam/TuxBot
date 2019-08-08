@@ -106,6 +106,9 @@ public class CmdHandler extends ListenerAdapter
             case "verify":
                 general.verify(msg);
                 break;
+            case "verifyAll":
+                mod.verifyAll(msg);
+                break;
             case "warn":
                 mod.warn(msg, args);
                 break;

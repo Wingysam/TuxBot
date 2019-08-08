@@ -371,9 +371,9 @@ public class CmdModeration
                 }
                 else
                 {
+                    msg.delete().queue();
                     MessageHistory history = new MessageHistory(channel);
                     List<Message> msgs;
-                    msg.delete().queue();
                     msgs = history.retrievePast(toDelete).complete();
                     channel.deleteMessages(msgs).queue();
                     embed.setTitle("Messages Deleted");
@@ -450,6 +450,30 @@ public class CmdModeration
         msg.getChannel().sendMessage(embed.build()).queue();
     }
 
+    public void verifyAll(Message msg)
+    {
+        embed = new EmbedBuilder();
+        if(hasPerms(msg.getMember(), Permission.MANAGE_ROLES))
+        {
+            Role verifiedRole = msg.getGuild().getRolesByName("verified", true).get(0);
+            for(Member m : msg.getGuild().getMembers())
+            {
+                if(!m.getRoles().contains(verifiedRole)) msg.getGuild().addRoleToMember(m, verifiedRole).queue();
+            }
+            embed.setTitle("All Members Verified!");
+            embed.setDescription("All users on this server are now verified");
+            embed.setColor(Bot.randomColor());
+        }
+        else
+        {
+            embed.setTitle("Error");
+            embed.addField("Invalid Permissions", "You need the permission: MANAGE_ROLES", false);
+            embed.setColor(Color.RED);
+        }
+        msg.getChannel().sendTyping().queue();
+        msg.getChannel().sendMessage(embed.build()).queue();
+    }
+
     public void warn(Message msg, String[] args)
     {
         embed = new EmbedBuilder();
@@ -484,6 +508,7 @@ public class CmdModeration
                     embed.addField("User", toWarn.getAsMention(), true);
                     embed.addField("Reason", reason, true);
                     embed.setColor(Bot.randomColor());
+                    msg.delete().queue();
                 }
             }
             else

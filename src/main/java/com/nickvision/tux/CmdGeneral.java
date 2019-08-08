@@ -13,7 +13,9 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("No Advertising of Server", "Tux now checks for server advertising and removes a message if it contains a server link", false)
+                .addField("Improved Rm Command", "Improved the process of removing messages in the rm command", false)
+                .addField("Improved Warm Command", "The warn command now deletes the call of the command", false)
+                .addField("Added verifyAll Command", "The verifyAll command will verify all users in the server who are not already. This command is good for servers who implement a verification system later in the server", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
