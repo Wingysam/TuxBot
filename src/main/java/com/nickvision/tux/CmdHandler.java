@@ -26,6 +26,11 @@ public class CmdHandler extends ListenerAdapter
             msg.getGuild().ban(msg.getAuthor(), 7, "bot").queue();
             return;
         }
+        if(rawMessage.contains("https://discord.gg"))
+        {
+            msg.delete().queue();
+            return;
+        }
         if(msg.getAuthor().isBot() || !cmd.startsWith(Bot.prefix) || cmd.equals(Bot.prefix) || msg.getChannel().getType() == ChannelType.PRIVATE) return;
         cmd = cmd.replace(Bot.prefix, "");
         switch(cmd)

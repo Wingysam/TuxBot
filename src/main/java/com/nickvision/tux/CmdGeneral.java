@@ -13,7 +13,7 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("No More Deleting Echo Command", "Tux will no longer delete the original messgae of the echo command call to prevent abuse", false)
+                .addField("No Advertising of Server", "Tux now checks for server advertising and removes a message if it contains a server link", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
