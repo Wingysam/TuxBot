@@ -13,9 +13,9 @@ public class CmdGeneral
         embed = new EmbedBuilder()
                 .setAuthor("Tux Changelog", null, msg.getGuild().getIconUrl())
                 .addField("Current Version", Bot.version, false)
-                .addField("Improved Rm Command", "Improved the process of removing messages in the rm command", false)
-                .addField("Improved Warm Command", "The warn command now deletes the call of the command", false)
-                .addField("Added verifyAll Command", "The verifyAll command will verify all users in the server who are not already. This command is good for servers who implement a verification system later in the server", false)
+                .addField("Updated JDA Version", "JDA 4 is no longer in beta", false)
+                .addField("Added Slots Command", "Test your luck", false)
+                .addField("Added 8ball Command", "Ask Tux a question", false)
                 .setColor(Bot.randomColor());
         msg.getChannel().sendTyping().queue();
         msg.getChannel().sendMessage(embed.build()).queue();
@@ -37,7 +37,9 @@ public class CmdGeneral
 
         String fun = "`coinflip` ~ Heads or Tails?" +
                 "\n`echo <Phrase>` ~ Make Tux look like he is saying something" +
-                "\n`rand <Range 1> <Range 2>` ~ Generates a random number in the given range";
+                "\n`rand <Range 1> <Range 2>` ~ Generates a random number in the given range" +
+                "\n`slots` ~ Test your luck and spin the machine" +
+                "\n`8ball <Question>` ~ Ask Tux a question";
 
         String mod = "`addrole <@User> <Role Name>` ~ Adds the given role to the pinged user" +
                 "\n`ban <@User> <Reason>` ~ Bans the pinged user for the given reason" +

@@ -88,6 +88,9 @@ public class CmdHandler extends ListenerAdapter
             case "roleinfo":
                 general.roleinfo(msg);
                 break;
+            case "slots":
+                fun.slots(msg);
+                break;
             case "source":
                 general.source(msg);
                 break;
@@ -114,6 +117,9 @@ public class CmdHandler extends ListenerAdapter
                 break;
             case "whois":
                 general.whoIs(msg, args);
+                break;
+            case "8ball":
+                fun.eightBall(msg, args);
                 break;
             default:
                 EmbedBuilder embed = new EmbedBuilder()
